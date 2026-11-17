@@ -1,0 +1,16 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Scratch scripts & temporary test files
+scratch/
+*.tmp
+all_options_test_output.txt
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store

@@ -1,0 +1,69 @@
+================================================================================
+        SCHOLARSHIP ELIGIBILITY SCREENING SYSTEM        
+            ANNUAL INSTITUTIONAL AUDIT REPORT            
+================================================================================
+Report Generated On : 2026-11-06 16:18:31
+Project Authority   : BCA Scholarship Screening Committee
+Screening Model     : Deterministic Rule-Based Screening Engine
+Evaluation Scale    : Indian 10.00-Point CGPA Scale
+--------------------------------------------------------------------------------
+
+1. EXECUTIVE AUDIT SUMMARY
+--------------------------------------------------------------------------------
+Total Student Profiles Evaluated  : 6,607
+Data Validation Passed (Valid)    : 6,606 (99.98%)
+Data Integrity Discrepancies      : 1 (0.02%)
+Total Candidates Found Eligible   : 1,668 (25.25%)
+Total Candidates Ineligible       : 4,938 (74.74%)
+
+2. SCHOLARSHIP CLASSIFICATION DISTRIBUTION
+--------------------------------------------------------------------------------
+  • Category 1: Highly Eligible        :     7 candidates (0.11%)
+  • Category 2: Eligible               :   934 candidates (14.14%)
+  • Category 3: Conditionally Eligible :   727 candidates (11.00%)
+  • Category 4: Not Eligible           : 4,938 candidates (74.74%)
+  • Disqualified (Invalid Records)     :     1 candidates (0.02%)
+
+3. MANDATORY RULE REJECTION IMPACT ANALYSIS
+--------------------------------------------------------------------------------
+Distribution of failed critical criteria among disqualified applicants:
+  - Low Attendance (< 75%)       : 2,396 occurrences (48.5%)
+  - High Income (> ₹500,000)     : 1,268 occurrences (25.7%)
+  - Excessive Backlogs (> 1)     : 1,321 occurrences (26.8%)
+  - Inactive Enrollment          :   264 occurrences (5.3%)
+  - Low CGPA (< 6.75)            : 3,599 occurrences (72.9%)
+
+4. TOP MERIT SCHOLARS SPOTLIGHT
+--------------------------------------------------------------------------------
+TOP HIGHLY ELIGIBLE SCHOLARS (TIER 1):
+  Rank #1  | ID: STU4193  | Name: Student_4193     | CGPA: 9.80 | Attnd: 90.0% | Income: ₹450,000
+  Rank #2  | ID: STU3458  | Name: Student_3458     | CGPA: 9.60 | Attnd: 93.0% | Income: ₹450,000
+  Rank #3  | ID: STU6523  | Name: Student_6523     | CGPA: 9.50 | Attnd: 90.0% | Income: ₹450,000
+  Rank #4  | ID: STU0771  | Name: Student_0771     | CGPA: 9.40 | Attnd: 96.0% | Income: ₹200,000
+  Rank #5  | ID: STU1608  | Name: Student_1608     | CGPA: 8.80 | Attnd: 98.0% | Income: ₹200,000
+
+TOP ELIGIBLE SCHOLARS (TIER 2):
+  Rank #1  | ID: STU2426  | Name: Student_2426     | CGPA: 9.90 | Attnd: 83.0% | Income: ₹450,000
+  Rank #2  | ID: STU0837  | Name: Student_0837     | CGPA: 9.40 | Attnd: 76.0% | Income: ₹200,000
+  Rank #3  | ID: STU1108  | Name: Student_1108     | CGPA: 8.90 | Attnd: 77.0% | Income: ₹450,000
+  Rank #4  | ID: STU2077  | Name: Student_2077     | CGPA: 8.40 | Attnd: 77.0% | Income: ₹450,000
+  Rank #5  | ID: STU0114  | Name: Student_0114     | CGPA: 7.90 | Attnd: 99.0% | Income: ₹450,000
+
+TOP CONDITIONALLY ELIGIBLE SCHOLARS (TIER 3 - EXCEPTION GRANTED):
+  Rank #1  | ID: STU0231  | Name: Student_0231     | CGPA: 6.90 | Attnd: 100.0% | Income: ₹200,000
+  Rank #2  | ID: STU2691  | Name: Student_2691     | CGPA: 6.90 | Attnd: 100.0% | Income: ₹200,000
+  Rank #3  | ID: STU3526  | Name: Student_3526     | CGPA: 6.90 | Attnd: 100.0% | Income: ₹200,000
+  Rank #4  | ID: STU5096  | Name: Student_5096     | CGPA: 6.90 | Attnd: 100.0% | Income: ₹200,000
+  Rank #5  | ID: STU6311  | Name: Student_6311     | CGPA: 6.90 | Attnd: 100.0% | Income: ₹200,000
+
+================================================================================
+5. COMMITTEE AUDIT CERTIFICATION
+--------------------------------------------------------------------------------
+This consolidated scholarship screening report has been compiled deterministically
+in accordance with institutional rule-based screening protocols.
+No manual overrides, black-box adjustments, or statistical approximations were applied.
+
+Prepared By : Student Developer & Lead Architect
+Verified By : BCA Examination & Faculty Review Board
+Audit Date  : 2026-11-06 16:18:31
+================================================================================

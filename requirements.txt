@@ -1,0 +1,17 @@
+# ==============================================================================
+# Scholarship Eligibility Screening System Using Rule-Based Conditions
+# College BCA Practical Project - Requirements Specification
+# ==============================================================================
+# This project is built entirely using Python's built-in Standard Library.
+# NO external third-party libraries, frameworks, or packages are required.
+# (e.g., Pandas, NumPy, Scikit-learn, Flask, or Rich are intentionally excluded).
+#
+# Standard Library Modules Utilized:
+#   - csv       : DictReader, DictWriter for compliant CSV data handling
+#   - os        : Path management and folder creation
+#   - sys       : System path resolution and graceful exit controls
+#   - datetime  : System date and time stamps for report generation
+#   - hashlib   : SHA-256 cryptographic checksums for dataset immutability
+#
+# Target Runtime: Python 3.8 or higher (Tested on Python 3.14)
+# ==============================================================================

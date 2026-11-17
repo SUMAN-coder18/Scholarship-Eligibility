@@ -1,0 +1,68 @@
+================================================================================
+        SCHOLARSHIP ELIGIBILITY SCREENING SYSTEM        
+          INSTITUTIONAL SCREENING SUMMARY REPORT        
+================================================================================
+Report Generated On : 2026-11-16 13:20:40
+Project Title       : Scholarship Eligibility Screening System Using Rule-Based Conditions
+System Architecture : Core Deterministic Rule Engine (Core Python Only)
+Academic Scope      : BCA College Project Demonstration
+--------------------------------------------------------------------------------
+
+1. DATASET INFORMATION
+--------------------------------------------------------------------------------
+Dataset Source Path : dataset/original_dataset.csv
+Total Student Rows  : 6,607
+Underlying Dataset  : Kaggle Student Performance Dataset (Secondary Education)
+Dataset Integrity   : SHA-256 matches recorded baseline
+
+2. DATA VALIDATION SUMMARY
+--------------------------------------------------------------------------------
+Total Applications Processed : 6,607
+Valid Student Records        : 6,606 (99.98%)
+Invalid Data Records         : 1 (0.02%)
+  * Note: Invalid records failed data type or boundary checks (e.g. Exam_Score > 100)
+    and were safely disqualified prior to rule-based evaluation.
+
+3. ELIGIBILITY DECISION SUMMARY
+--------------------------------------------------------------------------------
+Total Eligible Candidates    : 1,668 (25.25%)
+Total Ineligible Candidates  : 4,938 (74.74%)
+Overall Eligibility Rate     : 25.25%
+
+4. CATEGORY-WISE STUDENT CLASSIFICATION
+--------------------------------------------------------------------------------
+  • Category 1: Highly Eligible        :     7 candidates (  0.11%)
+  • Category 2: Eligible               :   934 candidates ( 14.14%)
+  • Category 3: Conditionally Eligible :   727 candidates ( 11.00%)
+  • Category 4: Not Eligible           : 4,938 candidates ( 74.74%)
+  • Disqualified (Invalid Record)      :     1 candidates (  0.02%)
+  Total Verified Records              : 6,607 records
+
+5. DECISION RULES SUMMARY
+--------------------------------------------------------------------------------
+A candidate must satisfy all 5 mandatory conditions to qualify for a scholarship:
+  1. Academic CGPA     : Minimum 7.00 on 10.00 scale (Demo_CGPA)
+  2. Attendance Rate   : Minimum 75.0% attendance
+  3. Family Income     : Annual family income <= ₹500,000 (Demo_Family_Income)
+  4. Active Backlogs   : Maximum 1 backlog allowed (Demo_Backlogs)
+  5. Enrollment Status : Must be currently 'Active' (Demo_Enrollment_Status)
+
+Classification Tiers:
+  - Highly Eligible       : All mandatory pass AND Demo_CGPA >= 8.50 AND Attendance >= 85%
+  - Eligible              : All 5 mandatory conditions pass under standard thresholds
+  - Conditionally Eligible : Demo_CGPA 6.75 - 6.99 (Academic Exception) AND all other 4 pass
+  - Not Eligible          : Fails one or more critical mandatory conditions
+
+6. IMPORTANT NOTES ON DEMONSTRATION DATA
+--------------------------------------------------------------------------------
+The original Kaggle Student Performance Dataset does NOT contain authentic Indian CGPA,
+annual family income in Rupees, active backlogs, or college enrollment statuses.
+To simulate institutional scholarship screening for this BCA college project,
+the following fields are clearly labeled as synthetic demonstration (Demo) data:
+  - Demo_CGPA             : Derived demonstration proxy (Exam_Score / 10.0)
+  - Demo_Family_Income    : Mapped demonstration INR proxy from Kaggle categories
+  - Demo_Backlogs         : Simulated active backlogs (0 to 2)
+  - Demo_Enrollment_Status: Simulated college enrollment status ('Active' / 'Inactive')
+These proxy fields are used solely for academic demonstration and do not reflect
+real-world financial or academic scholarship determinations.
+================================================================================
