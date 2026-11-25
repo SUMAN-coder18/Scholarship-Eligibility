@@ -1,8 +1,8 @@
 # Scholarship Eligibility Screening System Using Rule-Based Conditions
 
 **BCA 2nd Year Practical ExaminationCapstone Project**  
-*Technology Stack: Python 3.14 (Standard Library), Flask 3.1, HTML5, CSS3, JavaScript (ES6), Bootstrap 5, Chart.js*  
-*Architecture: Deterministic Rule-Based Screening Engine & Modern Web Dashboard*  
+*Technology Stack: Python 3.14 (Pure Standard Library: csv, os, sys, datetime, hashlib)*  
+*Architecture: Deterministic Rule-Based Screening Engine & Interactive Console Application*  
 *GitHub Repository: [SUMAN-coder18/Scholarship-Eligibility](https://github.com/SUMAN-coder18/Scholarship-Eligibility)*  
 
 ---
@@ -11,7 +11,7 @@
 
 The **Scholarship Eligibility Screening System** is an end-to-end, modular, fully transparent academic software system designed to automate institutional scholarship evaluations for higher education colleges and universities.
 
-Using a real-world dataset of **6,607 student records** (derived from Kaggle's *Student Performance Factors*), the system evaluates student profiles against five mandatory institutional criteria, calculates multi-factor composite scores, groups candidates into standardized eligibility tiers, applies strict four-level tie-breaking merit ranking, generates official timestamped compliance audit documents, and presents the entire workflow through both an **Interactive Console Application** and a **Modern Web SaaS Dashboard**.
+Using a real-world dataset of **6,607 student records** (derived from Kaggle's *Student Performance Factors*), the system evaluates student profiles against five mandatory institutional criteria, calculates multi-factor composite scores, groups candidates into standardized eligibility tiers, applies strict four-level tie-breaking merit ranking, generates official timestamped compliance audit documents, and presents the entire workflow through a high-performance **Interactive Console Application (`src/main.py`)**.
 
 Unlike probabilistic machine learning classifiers or black-box algorithms, this application is **100% deterministic and rule-based**. Every scholarship decision is auditable, repeatable, mathematically explainable, and accompanied by transparent rule-by-rule justification.
 
@@ -19,11 +19,9 @@ Unlike probabilistic machine learning classifiers or black-box algorithms, this 
 
 ## 2. Key Highlights & Distinguishing Features
 
-- **Dual-Interface Access**:
-  - **Modern Web Dashboard**: Responsive, clean academic SaaS interface (`http://127.0.0.1:5000`) with interactive charts, instant search, server-side pagination, profile modal views, and one-click report downloads.
-  - **Console Application**: Menu-driven CLI (`src/main.py`) for terminal demonstrations and rapid testing.
-- **Direct Access (No Login / No Signup)**: Opens directly onto the live dashboard. Zero authentication barriers or login delays during examinations.
-- **Python as Single Source of Truth**: Backend Flask layer reuses core evaluation modules directly. Zero logic duplication in JavaScript.
+- **Pure Python Standard Library (Zero External Dependencies)**: Runs on any standard Python installation without installing pip packages (no Pandas, NumPy, or web servers required).
+- **Interactive Menu-Driven Console CLI**: Fast terminal interface with defensive input validation, substring search, pagination, individual student evaluation, merit ranking, and report generation.
+- **Python as Single Source of Truth**: All screening rules, scores, and rankings are calculated deterministically by core Python modules in `src/`.
 - **Dataset Immutability & SHA-256 Verification**: The Kaggle dataset is strictly read-only. Integrity is cryptographically verified against the golden hash: `e8df8c4148ef83fb295ca1c092f2c6ee15272c0a8e3018b769a788ab50e96e97`.
 - **Defensive Data Validation Gate**: Catches corrupt data (e.g. `STU1526` with `Exam_Score = 101`) before evaluation, safely disqualifying invalid records without crashing.
 - **Transparent Demonstration Proxies**: All derived scholarship simulation fields (`Demo_CGPA`, `Demo_Family_Income`, `Demo_Backlogs`, `Demo_Enrollment_Status`) are clearly labeled and disclosed for college viva evaluation.
@@ -43,7 +41,7 @@ Unlike probabilistic machine learning classifiers or black-box algorithms, this 
 | **Phase 7** | **Report Generation** | `src/report.py` | Automated export of timestamped Text Summaries, 6,607-row CSV Datasets, and SHA-256 Audit Logs. |
 | **Phase 8** | **Menu-Driven Application** | `src/main.py` | Master interactive console CLI with defensive input handling and pagination. |
 | **Phase 9** | **Testing & Verification** | Test suites in all modules | Automated unit, integration, and assertion tests for all valid, invalid, and boundary cases. |
-| **Phase 10** | **Web Frontend & Documentation** | `web_app/` & `README.md` | Responsive Flask + Bootstrap 5 + Chart.js web dashboard and complete viva voce guide. |
+| **Phase 10** | **Project Documentation** | `README.md` & `Project_Report_BWU.md` | Complete university examination report and viva voce documentation. |
 
 ---
 
@@ -153,61 +151,40 @@ Every metric is dynamically calculated and cryptographically verified against th
 
 ---
 
-## 8. Web Frontend Dashboard Architecture (`web_app/`)
+## 8. Interactive Console Application Architecture (`src/main.py`)
 
-The application features a modern, responsive academic SaaS web interface:
+The system provides a comprehensive, interactive terminal-based interface designed specifically for college practical examinations:
 
+```text
+========================================
+ SCHOLARSHIP ELIGIBILITY SCREENING SYSTEM
+========================================
+
+1. Display All Applications
+2. Screen Individual Student
+3. Screen All Students
+4. Search Student
+5. Display Eligible Students
+6. Display Highly Eligible Students
+7. Rank Eligible Students
+8. Display Scholarship Summary
+9. Display Screening Date and Time
+10. Exit
+
+========================================
 ```
-web_app/
-├── app.py                  # Flask server, REST API endpoints, in-memory caching engine
-├── requirements.txt        # Flask dependency specification
-├── templates/
-│   └── index.html          # Single-Page Architecture (SPA) responsive dashboard layout
-└── static/
-    ├── css/
-    │   └── style.css       # Clean academic SaaS styling (navy, indigo, slate, emerald)
-    ├── js/
-    │   └── app.js          # Pure ES6 state management, live fetch controllers, Chart.js logic
-    └── images/             # Visual previews and UI icons
-```
 
-### Dashboard Views & Modules:
-1. **Institutional Dashboard Home**:
-   - 7 dynamic metric cards with real-time percentages.
-   - Interactive Chart.js doughnut chart depicting category distribution.
-   - Live SHA-256 cryptographic integrity verification badge.
-   - Prominent academic disclosure on synthetic demonstration fields.
-2. **Student Applications Directory**:
-   - High-performance server-side paginated table (does not overload browser DOM with 6,607 rows).
-   - Real-time substring search by Student ID or Student Name with clear button.
-   - Filter by record status (`All`, `Valid Only`, `Invalid Only`).
-   - "View Details" button opening full student audit modal.
-3. **Individual Eligibility Screening**:
-   - Direct Student ID lookup supporting flexible inputs (`STU0001`, `stu1`, `1`).
-   - Quick one-click viva test buttons (`STU4193`, `STU2426`, `STU0001`, `STU1526`).
-   - Real-time rendering of 5 mandatory rule checklists with Pass/Fail/Conditional badges.
-   - Circular score indicator with 4 sub-score progress bars and decision explanation quote.
-4. **Merit Ranking List**:
-   - Filterable merit table displaying overall institutional ranks (#1 to #1,668).
-   - Category filter pills (`All Ranked`, `Highly Eligible`, `Eligible`, `Conditionally Eligible`).
-   - Displays Student ID, Name, CGPA, Attendance, Income, Category badge, and informational Score.
-5. **Reports & Audit Management**:
-   - "Generate Reports Now" button executing Phase 7 `generate_all_reports()`.
-   - Generates official timestamped text summary reports, CSV datasets, and SHA-256 audit logs.
-   - Direct one-click download buttons for all generated artifacts.
-6. **About Project Page**:
-   - Comprehensive system documentation, technology breakdown, and rule-based determinism vs. AI/ML comparison.
-
-### REST API Endpoints:
-- `GET /` $\rightarrow$ Serves single-page dashboard.
-- `GET /api/dashboard` $\rightarrow$ Institutional statistics, qualification percentages, and Chart.js distribution data.
-- `GET /api/students` $\rightarrow$ Paginated student records with search and validation filters.
-- `GET /api/students/<student_id>` $\rightarrow$ Complete student profile, 5-rule check results, and composite score.
-- `GET /api/rankings` $\rightarrow$ Ranked merit list with category filters and pagination.
-- `POST /api/reports/generate` $\rightarrow$ Triggers Phase 7 report generation.
-- `GET /api/reports/list` $\rightarrow$ Lists all generated report artifacts in `reports/`.
-- `GET /api/reports/download/<filename>` $\rightarrow$ Secure download handler for report artifacts.
-- `GET /api/integrity` $\rightarrow$ Live SHA-256 dataset verification status.
+### Key Console Capabilities:
+1. **Option 1: Display All Applications**: Browse 6,607 student profiles with clean terminal pagination.
+2. **Option 2: Screen Individual Student**: Immediate evaluation by Student ID (e.g., `STU4193`, `STU1526`) displaying all 5 rule checks, 100-point score, and exact decision explanation.
+3. **Option 3: Screen All Students**: Batch-evaluates all 6,607 records into in-memory data structures in milliseconds.
+4. **Option 4: Search Student**: Case-insensitive substring search by Student ID or Student Name with dynamic result counts.
+5. **Option 5: Display Eligible Students**: Lists all 1,668 qualified scholars across Tiers 1, 2, and 3.
+6. **Option 6: Display Highly Eligible Students**: Spotlight on the 7 distinction scholars meeting Tier 1 criteria.
+7. **Option 7: Rank Eligible Students**: Displays official merit list sorted by 4-tier tie-breaking hierarchy with custom display limits.
+8. **Option 8: Display Scholarship Summary**: Displays high-level screening metrics, rejection distributions, and prompts for report generation.
+9. **Option 9: Display Screening Date and Time**: Shows current timestamp and system status.
+10. **Option 10: Exit**: Safely terminates the session without leaving lingering processes.
 
 ---
 
@@ -233,75 +210,27 @@ Scholarship_Eligibility_System/
 │   ├── report.py                        # Phase 7: Reporting & Audit File Generation
 │   └── main.py                          # Phase 8: Master Interactive Menu-Driven CLI
 │
-├── web_app/                             # Phase 10: Web Frontend Dashboard
-│   ├── app.py                           # Flask backend integration engine & API server
-│   ├── requirements.txt                 # Flask dependency
-│   ├── templates/
-│   │   └── index.html                   # Responsive SaaS dashboard interface
-│   └── static/
-│       ├── css/
-│       │   └── style.css                # Custom modern academic SaaS stylesheet
-│       ├── js/
-│       │   └── app.js                   # Vanilla ES6 client-side controller
-│       └── images/                      # Screenshot artifacts and visual assets
-│
+├── Project_Report_BWU.md                # Full academic project report (BWU format)
+├── Project_Report_BWU.doc               # Word document report (Calibri, printable)
 ├── README.md                            # Comprehensive Master Documentation & Viva Guide
-└── requirements.txt                     # Standard library confirmation & Flask note
+└── requirements.txt                     # Standard library specification (zero pip packages)
 ```
 
 ---
 
 ## 10. Execution & Running Instructions
 
-### Running the Web Dashboard (Recommended for Presentation)
+### Running the Interactive Console Application (Terminal)
 
-1. Open PowerShell or Command Prompt in the project root:
+1. Open PowerShell or Command Prompt in the project directory:
    ```powershell
    cd c:\Users\suman\OneDrive\Desktop\python\Scholarship_Eligibility_System
    ```
-2. Install Flask (if not already installed):
+2. Launch the application:
    ```powershell
-   python -m pip install -r web_app/requirements.txt
+   python src/main.py
    ```
-3. Start the Web Server:
-   ```powershell
-   python web_app/app.py
-   ```
-4. Open your web browser and navigate to:
-   **`http://127.0.0.1:5000`**
-   *(The dashboard loads immediately — no login or signup required)*
-
-*(To stop the server, press `Ctrl + C` in the terminal).*
-
----
-
-### Running the Interactive Console Application
-
-To run the terminal-based menu-driven application:
-
-```powershell
-python src/main.py
-```
-
-#### Interactive Menu Options:
-```text
-========================================
- SCHOLARSHIP ELIGIBILITY SCREENING SYSTEM
-========================================
-
-1. Display All Applications
-2. Screen Individual Student
-3. Screen All Students
-4. Search Student
-5. Display Eligible Students
-6. Display Highly Eligible Students
-7. Rank Eligible Students
-8. Display Scholarship Summary
-9. Display Screening Date and Time
-10. Exit
-
-========================================
-```
+   *(No pip packages or virtual environment needed — runs instantly on pure Python standard library!)*
 
 ---
 
@@ -353,8 +282,8 @@ python src/report.py
 ### Q6: Are Demo_CGPA, Demo_Family_Income, Demo_Backlogs, and Demo_Enrollment_Status real columns from the Kaggle dataset?
 > **Answer:** No. The original Kaggle dataset (`StudentPerformanceFactors.csv`) contains study habits and academic performance metrics (e.g. `Hours_Studied`, `Attendance`, `Exam_Score`, and `Family_Income` as High/Medium/Low categories), but lacks college-specific scholarship attributes like 10-point CGPA, numerical annual income, backlog counts, and active enrollment status. In Phase 2, we transparently generate synthetic demonstration proxy fields (`Demo_CGPA` derived from `Exam_Score`, `Demo_Family_Income` mapped from categorical income brackets, `Demo_Backlogs`, and `Demo_Enrollment_Status`) exclusively to simulate institutional scholarship rules without tampering with the original Kaggle CSV file.
 
-### Q7: How is the Web Frontend architected, and why is there no login or signup page?
-> **Answer:** The web application is built with Python Flask serving a responsive single-page architecture (SPA) styled with custom CSS and Bootstrap 5, using Chart.js for data visualization. Per institutional project requirements, there is no login or signup system because the application represents an internal institutional screening workstation where committee members immediately view live screening metrics and student rankings upon opening `http://127.0.0.1:5000`.
+### Q7: Why did you build the project as a pure terminal/console application with zero external dependencies?
+> **Answer:** For a core computer science practical examination, building an interactive terminal application strictly using Python's standard library (`csv`, `os`, `sys`, `datetime`, `hashlib`) proves deep mastery of fundamental computer science concepts: algorithmic complexity, data structures (dictionaries, tuples, lists), defensive stream I/O, error handling, and clean code architecture. It requires zero package installations, eliminates environmental discrepancies during practical exams, and executes at lightning speed on any standard Python setup.
 
 ### Q8: What is the difference between the 100-point composite score and the institutional merit rank?
 > **Answer:** The 100-point score is purely **informational**—it aggregates academic performance (40 pts), attendance (30 pts), financial need (20 pts), and discipline boost (10 pts) for student advising. The **official merit rank** is determined strictly by Category Tier (Tier 1 Highly Eligible first $\rightarrow$ Tier 2 Eligible second $\rightarrow$ Tier 3 Conditionally Eligible third) followed by the 4-tier tie-breaking hierarchy (`CGPA` desc $\rightarrow$ `Attendance` desc $\rightarrow$ `Family Income` asc $\rightarrow$ `Student_ID` asc). A student with a high score in Tier 2 will never outrank a Tier 1 Highly Eligible scholar.
