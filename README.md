@@ -210,8 +210,6 @@ Scholarship_Eligibility_System/
 │   ├── report.py                        # Phase 7: Reporting & Audit File Generation
 │   └── main.py                          # Phase 8: Master Interactive Menu-Driven CLI
 │
-├── Project_Report_BWU.md                # Full academic project report (BWU format)
-├── Project_Report_BWU.doc               # Word document report (Calibri, printable)
 ├── README.md                            # Comprehensive Master Documentation & Viva Guide
 └── requirements.txt                     # Standard library specification (zero pip packages)
 ```
